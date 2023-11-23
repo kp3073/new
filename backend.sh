@@ -1,26 +1,36 @@
-dnf module disable nodejs -y
-dnf module enable nodejs:18 -y
+echo Disable Nodjs Old
+dnf module disable nodejs -y >>/tmp/expense.log
 
-dnf install nodejs -y
+echo Re-install Nodjs
+dnf module enable nodejs:18 -y >>/tmp/expense.log
+
+echo Download Nodjs Depandensis
+dnf install nodejs -y >>/tmp/expense.log
 
 cp backend.service /etc/systemd/system/backend.service
 
-useradd expense
+echo adding user
+useradd expense >>/tmp/expense.log
 
 mkdir /app
 
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip
+echo downloading backend Contant
+curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip >>/tmp/expense.log
 cd /app
-unzip /tmp/backend.zip
 
-cd /app
-npm install
+echo Unziping file
+unzip /tmp/backend.zip >>/tmp/expense.log
 
-systemctl daemon-reload
+echo NPM install
+npm install >>/tmp/expense.log
 
-systemctl enable backend
-systemctl start backend
+echo starting service
+systemctl daemon-reload >>/tmp/expense.log
 
-dnf install mysql -y
+systemctl enable backend>>/tmp/expense.log
+systemctl start backend >>/tmp/expense.log
 
-mysql -h 172.31.39.144 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+echo install mysql
+dnf install mysql -y >>/tmp/expense.log
+
+mysql -h 172.31.39.144 -uroot -pExpenseApp@1 < /app/schema/backend.sql >>/tmp/expense.log
