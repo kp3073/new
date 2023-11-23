@@ -1,7 +1,8 @@
 echo installing Nginx
 dnf install nginx -y >/tmp/expense.log
 
-cp expense.conf /etc/nginx/default.d/expense.conf
+
+cp expense.conf /etc/nginx/default.d/expense.conf >/tmp/expense.log
 
 echo Removing Old contant of Nginx
 rm -rf /usr/share/nginx/html/* >/tmp/expense.log
