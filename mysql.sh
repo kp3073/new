@@ -8,7 +8,7 @@ dnf install mysql-community-server -y >>/tmp/expense.log
 
 echo statingmysqld services
 systemctl enable mysqld >>/tmp/expense.log
-systemctl start mysqld >>/tmp/expense.log
+systemctl restart mysqld >>/tmp/expense.log
 
 echo password
 mysql_secure_installation --set-root-pass ExpenseApp@1 >>/tmp/expense.log
