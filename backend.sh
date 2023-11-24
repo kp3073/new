@@ -22,6 +22,7 @@ echo Unziping file
 unzip /tmp/backend.zip >>/tmp/expense.log
 
 echo NPM install
+cd /app
 npm install >>/tmp/expense.log
 
 echo starting service
