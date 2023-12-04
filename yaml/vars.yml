@@ -5,7 +5,7 @@
   tasks:
     - name: Print hello world
       ansible.builtin.debug:
-        msg: Hello World
+        msg: "{{ URL }}"
       vars:
         URL: task.example.com
     - name: Demo on Play Vars
