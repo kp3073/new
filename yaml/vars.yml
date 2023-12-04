@@ -6,6 +6,6 @@
     - name: Print hello world
       ansible.builtin.debug:
         msg: Hello World
-   - name: Demo on Play Vars
-     ansible.builtin.debug:
-       msg: "{{ URL }}"
+    - name: Demo on Play Vars
+      ansible.builtin.debug:
+        msg: "{{ URL }}"
