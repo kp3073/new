@@ -6,6 +6,8 @@
     - name: Print hello world
       ansible.builtin.debug:
         msg: Hello World
+      vars:
+        URL: task.example.com
     - name: Demo on Play Vars
       ansible.builtin.debug:
         msg: "{{ URL }}"
